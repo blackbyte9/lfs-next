@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import 'bootstrap/dist/css/bootstrap.min.css';
 import "./globals.css";
+import { inter } from '@/ui/fonts';
 
 export const metadata: Metadata = {
   title: "LFS Vöhringen",
@@ -14,7 +15,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="de" data-bs-theme="dark">
-      <body>
+      <body className={`${inter.className} antialiased`}>
         {children}
       </body>
     </html>
