@@ -15,7 +15,7 @@ export default function NavLinks() {
     return(
         <Navbar collapseOnSelect expand="lg" bg="primary" data-bs-theme="dark">
             <Container>
-                <Navbar.Brand href="#home"><Image src="logo.png" width="50" height="50" fluid /></Navbar.Brand>
+                <Navbar.Brand href="#home"><Image src="logo.png" alt="" width="50" height="50" fluid /></Navbar.Brand>
                 <Navbar.Toggle aria-controls="responsive-navbar-nav" />
                 <Navbar.Collapse id="responsive-navbar-nav">
                     <Nav className="me-auto" >

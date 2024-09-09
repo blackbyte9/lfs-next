@@ -4,14 +4,16 @@ import Col from 'react-bootstrap/Col';
 
 export default function Home() {
   return (
+    <>
     <main>
       <Container>
         <Row>
           <Col></Col>          
-          <Col xs={6}>Main Page</Col>
+          <Col xs={6}>Install</Col>
           <Col>&nbsp;</Col>
         </Row>
       </Container>
     </main>
+    </>
   );
 }
