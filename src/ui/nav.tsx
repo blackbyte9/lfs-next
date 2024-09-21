@@ -6,6 +6,7 @@ import Nav from 'react-bootstrap/Nav';
 import Navbar from 'react-bootstrap/Navbar';
 import Image from 'react-bootstrap/Image';
 import NavDropdown from 'react-bootstrap/esm/NavDropdown';
+import Link from 'next/link';
 
 export default function NavLinks() {
     useEffect(() => {
@@ -15,27 +16,27 @@ export default function NavLinks() {
     return(
         <Navbar collapseOnSelect expand="lg" bg="primary" data-bs-theme="dark">
             <Container>
-                <Navbar.Brand href="#home"><Image src="logo.png" alt="" width="50" height="50" fluid /></Navbar.Brand>
+                <Navbar.Brand href="#home"><Image src="/logo.png" alt="" width="50" height="50" fluid /></Navbar.Brand>
                 <Navbar.Toggle aria-controls="responsive-navbar-nav" />
                 <Navbar.Collapse id="responsive-navbar-nav">
                     <Nav className="me-auto" >
-                    <Nav.Link href="#home">Ausleihen</Nav.Link>
-                    <Nav.Link href="#home">Zurückgebe</Nav.Link>
+                    <Nav.Link href="/lfb/lease">Ausleihen</Nav.Link>
+                    <Nav.Link href="/lfb/return">Zurückgebe</Nav.Link>
                     <NavDropdown title="Bücher" id="collapsible-nav-dropdown">
-                        <NavDropdown.Item href="#action/3.1">Büchertypen</NavDropdown.Item>
-                        <NavDropdown.Item href="#action/3.2">Bücherliste</NavDropdown.Item>
+                        <NavDropdown.Item href="/lfb/books">Büchertypen</NavDropdown.Item>
+                        <NavDropdown.Item href="/lfb/books/items">Bücherliste</NavDropdown.Item>
                     </NavDropdown>
                     <NavDropdown title="Schüler" id="collapsible-nav-dropdown">
-                        <NavDropdown.Item href="#action/3.1">Schülerliste</NavDropdown.Item>
-                        <NavDropdown.Item href="#action/3.2">Ausleihen</NavDropdown.Item>
+                        <NavDropdown.Item href="/lfb/students">Schülerliste</NavDropdown.Item>
+                        <NavDropdown.Item href="/lfb/students/info/leases">Ausleihen</NavDropdown.Item>
                         <NavDropdown.Divider />
-                        <NavDropdown.Item href="#action/3.2">Schülerliste importieren</NavDropdown.Item>
+                        <NavDropdown.Item href="/admin/students/import">Schülerliste importieren</NavDropdown.Item>
                     </NavDropdown>
                     <NavDropdown title="Adminsitration" id="collapsible-nav-dropdown">
-                        <NavDropdown.Item href="#action/3.1">Helferzugang</NavDropdown.Item>
+                        <NavDropdown.Item href="/admin/users">Helferzugang</NavDropdown.Item>
                         <NavDropdown.Divider />
-                        <NavDropdown.Item href="#action/3.1">Import</NavDropdown.Item>
-                        <NavDropdown.Item href="#action/3.1">Export</NavDropdown.Item>
+                        <NavDropdown.Item href="/admin/data/import">Import</NavDropdown.Item>
+                        <NavDropdown.Item href="/admin/data/export">Export</NavDropdown.Item>
                     </NavDropdown>
                     </Nav>
                 </Navbar.Collapse>
