@@ -6,7 +6,6 @@ import Nav from 'react-bootstrap/Nav';
 import Navbar from 'react-bootstrap/Navbar';
 import Image from 'react-bootstrap/Image';
 import NavDropdown from 'react-bootstrap/esm/NavDropdown';
-import Link from 'next/link';
 
 export default function NavLinks() {
     useEffect(() => {
