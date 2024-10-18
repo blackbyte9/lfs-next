@@ -1,8 +1,10 @@
+import UserTable from "@/ui/UserTable";
 
-export default function Home() {
+export default async function AdminUsers() {
   return (
     <>
-    Benutzerverwaltung
+    <h1>Benutzerverwaltung</h1>
+    <UserTable />
     </>
   );
 }
