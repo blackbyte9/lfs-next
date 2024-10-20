@@ -1,22 +1,26 @@
+import * as React from 'react';
 import type { Metadata } from "next";
-import 'bootstrap/dist/css/bootstrap.min.css';
-import "./globals.css";
-import { inter } from '@/ui/fonts';
+import { AppRouterCacheProvider } from '@mui/material-nextjs/v14-appRouter';
+import { ThemeProvider } from '@mui/material/styles';
+import CssBaseline from '@mui/material/CssBaseline';
+import theme from '@/ui/theme';
 
 export const metadata: Metadata = {
   title: "LFS Vöhringen",
   description: "erstellt mit Next.JS",
 };
 
-export default function RootLayout({
-  children,
-}: Readonly<{
-  children: React.ReactNode;
-}>) {
+export default function RootLayout(props: { children: React.ReactNode }) {
   return (
-    <html lang="de" data-bs-theme="dark">
-      <body className={`${inter.className} antialiased`}>
-        {children}
+    <html lang="en">
+      <body>
+        <AppRouterCacheProvider options={{ enableCssLayer: true }}>
+          <ThemeProvider theme={theme}>
+            {/* CssBaseline kickstart an elegant, consistent, and simple baseline to build upon. */}
+            <CssBaseline />
+            {props.children}
+          </ThemeProvider>
+        </AppRouterCacheProvider>
       </body>
     </html>
   );

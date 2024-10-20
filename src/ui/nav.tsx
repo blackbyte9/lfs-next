@@ -1,50 +1,143 @@
 "use client";
 
-import { useEffect } from 'react';
-import Container from 'react-bootstrap/Container';
-import Nav from 'react-bootstrap/Nav';
-import Navbar from 'react-bootstrap/Navbar';
-import Image from 'react-bootstrap/Image';
-import NavDropdown from 'react-bootstrap/esm/NavDropdown';
+import * as React from 'react';
+import AppBar from '@mui/material/AppBar';
+import Box from '@mui/material/Box';
+import Toolbar from '@mui/material/Toolbar';
+import Typography from '@mui/material/Typography';
+import Button from '@mui/material/Button';
+import IconButton from '@mui/material/IconButton';
+import MenuIcon from '@mui/icons-material/Menu';
+import Link from '@mui/material/Link';
+import Menu from '@mui/material/Menu';
+import MenuItem from '@mui/material/MenuItem';
+import Divider from '@mui/material/Divider';
 
 export default function NavLinks() {
-    useEffect(() => {
-        typeof document !== undefined ? require('bootstrap/dist/js/bootstrap') : null
-    }, [])
-    
-    return(
-        <Navbar collapseOnSelect expand="lg" bg="primary" data-bs-theme="dark">
-            <Container>
-                <Navbar.Brand href="#home"><Image src="/logo.png" alt="" width="50" height="50" fluid /></Navbar.Brand>
-                <Navbar.Toggle aria-controls="responsive-navbar-nav" />
-                <Navbar.Collapse id="responsive-navbar-nav">
-                    <Nav className="me-auto" >
-                    <Nav.Link href="/lfb/lease">Ausleihen</Nav.Link>
-                    <Nav.Link href="/lfb/return">Zurückgebe</Nav.Link>
-                    <NavDropdown title="Bücher" id="collapsible-nav-dropdown">
-                        <NavDropdown.Item href="/lfb/books">Büchertypen</NavDropdown.Item>
-                        <NavDropdown.Item href="/lfb/books/items">Bücherliste</NavDropdown.Item>
-                    </NavDropdown>
-                    <NavDropdown title="Schüler" id="collapsible-nav-dropdown">
-                        <NavDropdown.Item href="/lfb/students">Schülerliste</NavDropdown.Item>
-                        <NavDropdown.Item href="/lfb/students/info/leases">Ausleihen</NavDropdown.Item>
-                        <NavDropdown.Divider />
-                        <NavDropdown.Item href="/admin/students/import">Schülerliste importieren</NavDropdown.Item>
-                    </NavDropdown>
-                    <NavDropdown title="Adminsitration" id="collapsible-nav-dropdown">
-                        <NavDropdown.Item href="/admin/users">Helferzugang</NavDropdown.Item>
-                        <NavDropdown.Divider />
-                        <NavDropdown.Item href="/admin/data/import">Import</NavDropdown.Item>
-                        <NavDropdown.Item href="/admin/data/export">Export</NavDropdown.Item>
-                    </NavDropdown>
-                    </Nav>
-                </Navbar.Collapse>
-                <Nav className="justify-content-end">
-                    <Navbar.Text>
-                        Benutzer: <a href="#login">Klaus Mustermann</a>
-                    </Navbar.Text>
-                </Nav>
-            </Container>
-        </Navbar>
-    );
+  const [anchorBook, setAnchorBook] = React.useState<null | HTMLElement>(null);
+  const openBook = Boolean(anchorBook);
+  const handleClickBook = (event: React.MouseEvent<HTMLButtonElement>) => {
+    setAnchorBook(event.currentTarget);
+  };
+  const handleCloseBook = () => {
+    setAnchorBook(null);
+  };
+
+  const [anchorStudent, setAnchorStudent] = React.useState<null | HTMLElement>(null);
+  const openStudent = Boolean(anchorStudent);
+  const handleClickStudent = (event: React.MouseEvent<HTMLButtonElement>) => {
+    setAnchorStudent(event.currentTarget);
+  };
+  const handleCloseStudent = () => {
+    setAnchorStudent(null);
+  };
+
+  const [anchorAdmin, setAnchorAdmin] = React.useState<null | HTMLElement>(null);
+  const openAdmin = Boolean(anchorAdmin);
+  const handleClickAdmin = (event: React.MouseEvent<HTMLButtonElement>) => {
+    setAnchorAdmin(event.currentTarget);
+  };
+  const handleCloseAdmin = () => {
+    setAnchorAdmin(null);
+  };
+
+  return (
+    <Box sx={{ flexGrow: 1}}>
+      <AppBar position="static" color="primary" enableColorOnDark>
+        <Toolbar sx={{ justifyContent: 'flex-start' }}>
+          <IconButton
+            size="large"
+            edge="start"
+            color="inherit"
+            aria-label="menu"
+            sx={{ mr: 2 }}
+          >
+            <img src="/logo.png" width="50" height="50" />
+          </IconButton>
+          <Typography color="inherit" variant="h6" component="div" sx={{ flexGrow: 1 }}>            
+            <Link href="/lfb/lease" color="inherit">Ausleihen</Link>
+          </Typography>
+          <Typography color="inherit" variant="h6" component="div" sx={{ flexGrow: 1 }}>            
+            <Link href="/lfb/return" color="inherit">Zurückgeben</Link>
+          </Typography>
+          <Button
+            id="book-button"
+            aria-controls={openBook ? 'book-menu' : undefined}
+            aria-haspopup="true"
+            aria-expanded={openBook ? 'true' : undefined}
+            onClick={handleClickBook}
+            color="inherit"
+          >
+            <Typography color="inherit" variant="h6" component="div" sx={{ flexGrow: 1 }}>  
+              Bücher
+            </Typography>
+          </Button>
+          <Menu
+            id="book-menu"
+            anchorEl={anchorBook}
+            open={openBook}
+            onClose={handleCloseBook}
+            MenuListProps={{
+              'aria-labelledby': 'basic-button',
+            }}
+          >
+            <MenuItem onClick={handleCloseBook}><Link href="/lfb/books" color="inherit">Büchertypen</Link></MenuItem>
+            <MenuItem onClick={handleCloseBook}><Link href="/lfb/books/items" color="inherit">Bücherliste</Link></MenuItem>
+          </Menu>
+          <Button
+            id="student-button"
+            aria-controls={openStudent ? 'student-menu' : undefined}
+            aria-haspopup="true"
+            aria-expanded={openStudent ? 'true' : undefined}
+            onClick={handleClickStudent}
+            color="inherit"
+          >
+            <Typography color="inherit" variant="h6" component="div" sx={{ flexGrow: 1 }}>  
+              Schüler
+            </Typography>
+          </Button>
+          <Menu
+            id="Admin-menu"
+            anchorEl={anchorAdmin}
+            open={openAdmin}
+            onClose={handleCloseAdmin}
+            MenuListProps={{
+              'aria-labelledby': 'basic-button',
+            }}
+          >
+            <MenuItem onClick={handleCloseAdmin}><Link href="/admin/users" color="inherit">Benutzerverwaltung</Link></MenuItem>
+            <Divider />
+            <MenuItem onClick={handleCloseAdmin}><Link href="/admin/data/import" color="inherit">Datenimport</Link></MenuItem>
+            <MenuItem onClick={handleCloseAdmin}><Link href="/admin/data/export" color="inherit">Datenexport</Link></MenuItem>
+          </Menu>
+          <Button
+            id="admin-button"
+            aria-controls={openAdmin ? 'admin-menu' : undefined}
+            aria-haspopup="true"
+            aria-expanded={openAdmin ? 'true' : undefined}
+            onClick={handleClickAdmin}
+            color="inherit"
+          >
+            <Typography color="inherit" variant="h6" component="div" sx={{ flexGrow: 1 }}>  
+              Admin
+            </Typography>
+          </Button>
+          <Menu
+            id="student-menu"
+            anchorEl={anchorStudent}
+            open={openStudent}
+            onClose={handleCloseStudent}
+            MenuListProps={{
+              'aria-labelledby': 'basic-button',
+            }}
+          >
+            <MenuItem onClick={handleCloseStudent}><Link href="/lfb/students/info/leases" color="inherit">Ausleihliste</Link></MenuItem>
+            <Divider />
+            <MenuItem onClick={handleCloseStudent}><Link href="/admin/students/import" color="inherit">Schülerliste importieren</Link></MenuItem>
+          </Menu>
+          <Button color="inherit">Login</Button>
+        </Toolbar>
+      </AppBar>
+    </Box>
+  );
 }
