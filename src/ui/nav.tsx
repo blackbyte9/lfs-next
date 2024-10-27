@@ -9,7 +9,7 @@ import NavDropdown from 'react-bootstrap/esm/NavDropdown';
 
 export default function NavLinks() {
     useEffect(() => {
-        typeof document !== undefined ? require('bootstrap/dist/js/bootstrap') : null
+        //typeof document !== undefined ? require('bootstrap/dist/js/bootstrap') : null
     }, [])
     
     return(

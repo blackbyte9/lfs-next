@@ -1,5 +1,11 @@
 This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
 
+## Links
+https://nextjs.org/learn/dashboard-app/getting-started
+https://github.com/vercel/next-learn/tree/main/dashboard/starter-example/app
+https://react-bootstrap.netlify.app/docs/components/accordion
+https://icons.getbootstrap.com/#install
+
 ## Getting Started
 
 First, run the development server:
